@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Lets the layout fit both phones and desktops -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>BotOrNot: Visual Sort Puzzle</title>
+
+  <!-- favicon and styles are one level up from /puzzles -->
+  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="../css/styles.css">
+
+  <!-- Puzzle 1 logic -->
+  <script src="../js/puzzle1.js" defer></script>
+</head>
+<body class="puzzle-page">
+
+  <div class="portfolio-page">
+
+    <!-- HEADER (same as index.html, with updated relative links) -->
+    <header class="portfolio-header">
+      <div class="portfolio-header-brand">
+        <img src="../images/logo.svg" class="portfolio-logo" alt="BotOrNot logo">
+        <div class="portfolio-header-text">
+          <h1 class="portfolio-owner-name">BotOrNot</h1>
+          <p class="portfolio-owner-tagline">
+            Stop bots with puzzles humans solve in seconds
+          </p>
+        </div>
+      </div>
+
+      <nav class="portfolio-main-navigation" aria-label="Primary navigation">
+        <ul class="portfolio-main-navigation-list">
+          <!-- index.html lives one level up from /puzzles -->
+          <li><a href="../index.html#portfolio-projects">Puzzles</a></li>
+          <li><a href="../index.html#portfolio-about">About</a></li>
+          <li><a href="../index.html#portfolio-contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- MAIN CONTENT: Visual Sort Puzzle -->
+    <main class="portfolio-main-content" aria-labelledby="page-title">
+      <section class="portfolio-projects-section">
+        <h2 id="page-title" class="portfolio-section-title">
+          Visual Sort
+        </h2>
+
+        <p id="puzzle-instruction">
+          Loading categories… If nothing appears, please reload or try again.
+        </p>
+
+        <!-- Live region for screen readers -->
+        <div id="aria-status" class="visually-hidden" aria-live="polite"></div>
+
+        <!-- Mixed items from JSON are dynamically inserted after fetch -->
+        <section aria-labelledby="available-items-title">
+          <h3 id="available-items-title">Items to sort</h3>
+          <div id="available-items" class="items-grid" role="list"></div>
+        </section>
+
+        <!-- Drop zones -->
+        <section class="dropzones" aria-labelledby="dropzones-title">
+          <h3 id="dropzones-title">Category drop zones</h3>
+
+          <!-- Drop zone for the first category -->
+          <div
+            id="dropzone-a"
+            class="dropzone"
+            data-accept-category=""
+            aria-label="Drop items for the first category here"
+            role="region"
+            tabindex="0">
+            <h4 id="dropzone-a-label">Category 1</h4>
+          </div>
+
+          <!-- Drop zone for the second category -->
+          <div
+            id="dropzone-b"
+            class="dropzone"
+            data-accept-category=""
+            aria-label="Drop items for the second category here"
+            role="region"
+            tabindex="0">
+            <h4 id="dropzone-b-label">Category 2</h4>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="portfolio-footer">
+      <p class="portfolio-footer-copy">
+        &copy; 2025 BotOrNot. All rights reserved.
+      </p>
+      <ul class="portfolio-footer-links">
+        <li><a href="#page-title">Back to top</a></li>
+      </ul>
+    </footer>
+
+  </div>
+</body>
+</html>

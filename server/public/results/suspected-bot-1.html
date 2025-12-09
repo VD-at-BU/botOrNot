@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BotOrNot: Suspicious Activity (Attempt 1)</title>
+  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="results-page">
+  <div class="portfolio-page">
+    <header class="portfolio-header">
+      <div class="portfolio-header-brand">
+        <img src="../images/logo.svg" class="portfolio-logo" alt="BotOrNot logo">
+        <div class="portfolio-header-text">
+          <h1 class="portfolio-owner-name">BotOrNot</h1>
+          <p class="portfolio-owner-tagline">
+            Stop bots with puzzles humans solve in seconds
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <main class="portfolio-main-content">
+      <section class="portfolio-projects-section">
+        <h2 class="portfolio-section-title">Let’s Try That Again</h2>
+        <p>
+          Something about that attempt looked off. This doesn’t mean you’re a bot,
+          but we’d like one more run through the puzzle.
+        </p>
+        <p>
+          You’ll be redirected back to the puzzle automatically in a moment.
+          If not, you can use the link below.
+        </p>
+        <p><a href="../puzzles/puzzle1.html">Retry now →</a></p>
+      </section>
+    </main>
+
+    <footer class="portfolio-footer">
+      <p class="portfolio-footer-copy">&copy; 2025 BotOrNot. All rights reserved.</p>
+    </footer>
+  </div>
+
+	<script>
+	  setTimeout(function () {
+		var params = new URLSearchParams(window.location.search);
+		var p = params.get("p") || "1";
+		var target;
+		if (p === "2") {
+		  target = "../puzzles/puzzle2.html";
+		} else if (p === "3") {
+		  target = "../puzzles/puzzle3.html";
+		} else {
+		  target = "../puzzles/puzzle1.html";
+		}
+		window.location.href = target;
+	  }, 4000);
+	</script>
+	
+</body>
+</html>

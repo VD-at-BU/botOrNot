@@ -1,0 +1,804 @@
+
+/*
+  The code below styles the project using Flexbox for the header and footer,
+  Grid for the main layout and project cards. This code also uses pseudo-classes, 
+  pseudo-elements, combinators, and attribute selectors.
+*/
+
+:root {
+  --bn-accent: #3cab3c;       /* main BotOrNot green (matches logo and theme_color) */
+  --bn-accent-dark: #1b5e20;  /* darker green for hover states */
+  --bn-bg: #f4fff8;           /* very light green page background */
+  --bn-text-main: #111827;    /* main text color */
+}
+
+/* Ensures padding and borders do not break layout */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Sets base text styles and page spacing */
+body {
+  margin: 24px;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  color: var(--bn-text-main);
+  background-color: var(--bn-bg);
+}
+
+/* Limits the page to a readable size in the center of the screen */
+.portfolio-page {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-inline: 16px;
+}
+
+/* HEADER (Flexbox) */
+
+/* Uses Flexbox to align logo, name, and navigation in a single row */
+.portfolio-header {
+
+  /* Keeps the header visible while scrolling */
+  position: sticky;
+
+  /* Sticks the header to the top of the viewport */
+  top: 0;                  
+  
+  /* Places header above cards during scrolling */
+  z-index: 10;             
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: 16px 24px;
+  border-radius: 12px;
+  border: 1px solid #d0d7e2;
+  background-color: #ffffff;
+  
+  /* Smooths hover effects */
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+/* Gives the header a hover effect similar to cards */
+.portfolio-header:hover {
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.10);
+  border-color: var(--bn-accent);
+}
+
+/* Groups the circular logo and the text title */
+.portfolio-header-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Creates a small circular logo with initials */
+.portfolio-header-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #4f46e5;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+/* BotOrNot logo in header */
+.portfolio-logo {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  display: block;
+}
+
+/* Keeps the left side visually distinct */
+.portfolio-owner-name {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+/* Adds a small gray tagline under the name */
+.portfolio-owner-tagline {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+/* Resets the list style and uses Flexbox for horizontal navigation */
+.portfolio-main-navigation-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 12px;
+}
+
+/* Adds oval-shaped buttons for navigation links */
+.portfolio-main-navigation-list a {
+  text-decoration: none;
+  font-size: 0.95rem;
+  color: #111827;
+  padding: 6px 12px;
+  border-radius: 999px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Highlights navigation links on hover and focus for better usability */
+.portfolio-main-navigation-list a:hover,
+.portfolio-main-navigation-list a:focus {
+  background-color: #111827;
+  color: #ffffff;
+  outline: none;
+}
+
+/* Highlights the active navigation item when its section is the current :target */
+body:has(#portfolio-projects:target) 
+  .portfolio-main-navigation-list a[href="#portfolio-projects"],
+body:has(#portfolio-about:target) 
+  .portfolio-main-navigation-list a[href="#portfolio-about"],
+body:has(#portfolio-contact:target) 
+  .portfolio-main-navigation-list a[href="#portfolio-contact"] {
+  background-color: var(--bn-accent);
+  color: #ffffff;
+}
+
+/* Visually highlights section header when their navigation link is the current :target */
+#portfolio-projects:target .portfolio-section-title,
+#portfolio-about:target #about-title,
+#portfolio-contact:target #contact-title {
+  background-color: #eef2ff;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+/* MAIN LAYOUT (Grid) */
+
+/* Makes sure anchored sections are not hidden under the sticky header */
+#portfolio-projects,
+#portfolio-about,
+#portfolio-contact {
+  scroll-margin-top: 80px;
+}
+
+/* Uses CSS Grid to place the main content next to the sidebar on larger screens */
+.portfolio-main-layout {
+  display: grid;
+  grid-template-columns: 3fr 1.4fr;
+  gap: 32px;
+  margin-block: 32px;
+}
+
+/* Makes sure main content does not overflow when space is limited */
+.portfolio-main-content {
+  min-width: 0;
+}
+
+/* Styles the sidebar container with a light border and padding */
+.portfolio-sidebar {
+  background-color: #ffffff;
+  padding: 18px;
+  border-radius: 12px;
+  border: 1px solid #d0d7e2;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+/* Adds the same hover effect to the sidebar as project cards */
+.portfolio-sidebar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.10);
+  border-color: var(--bn-accent);
+}
+
+/* PUZZLES */
+
+/* Adds a visually distinct section title with a bar below it */
+.portfolio-section-title {
+  margin: 0 0 18px;
+  font-size: 1.1rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #4b5563;
+  position: relative;
+}
+
+/* Uses a pseudo-element to draw an underline under the section title */
+.portfolio-section-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 72px;
+  height: 3px;
+  border-radius: 999px;
+  background-color: var(--bn-accent);
+}
+
+/* Creates a responsive grid for project cards */
+.portfolio-projects-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
+/* Styles every direct puzzle card inside the grid and uses child combinator */
+.portfolio-projects-grid > .portfolio-project-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px 16px 16px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #d0d7e2;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+/* Adds a shadow effect when hovering over a puzzle card */
+.portfolio-project-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.10);
+  border-color: #4f46e5;
+}
+
+/* Customizes the meta text on the first puzzle card using :nth-child */
+.portfolio-project-card:nth-child(1) .portfolio-project-meta {
+  color: inherit;
+}
+
+/* Uses an attribute selector to highlight a featured puzzle (the most difficult one) */
+.portfolio-project-card[data-project-featured="true"] {
+  border-width: 2px;
+  border-color: var(--bn-accent);
+}
+
+/* Keeps the puzzle title bold and clear */
+.portfolio-project-title {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+/* Adds an uppercase meta line under the puzzle title */
+.portfolio-project-meta {
+  margin: 0;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #6b7280; /* neutral subtitle color */
+}
+
+/* Sets the body text for puzzle description and justifies it inside the card */
+.portfolio-project-description {
+  margin: 8px 0 8px;
+  margin-top: 8px;
+  font-size: 0.92rem;
+  color: #374151;
+  text-align: justify;
+}
+
+/* Wraps the collapsible description so it sits right under the meta line */
+.portfolio-project-details {
+  margin-top: 8px;
+}
+
+/* Styles the clickable summary line to look like a text link */
+.portfolio-project-details-summary {
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--bn-accent);
+  padding: 6px 0 0;
+  list-style: none;
+}
+
+/* Hides the default disclosure triangle in most browsers */
+.portfolio-project-details-summary::-webkit-details-marker {
+  display: none;
+}
+details > summary {
+  list-style: none;
+}
+
+/* Shows "View details" when closed and "Hide details" when open */
+.portfolio-project-details-summary-closed,
+.portfolio-project-details-summary-open {
+  transition: color 0.15s ease;
+}
+
+.portfolio-project-details[open] .portfolio-project-details-summary-closed {
+  display: none;
+}
+
+.portfolio-project-details:not([open]) .portfolio-project-details-summary-open {
+  display: none;
+}
+
+/* Adds subtle feedback when hovering or focusing the summary line */
+.portfolio-project-details-summary:hover,
+.portfolio-project-details-summary:focus {
+  text-decoration: underline;
+  outline: none;
+}
+
+/* SIDEBAR */
+
+/* Adds extra spacing between sidebar sections using adjacent sibling combinator */
+.portfolio-sidebar-section + .portfolio-sidebar-section {
+  margin-top: 16px;
+}
+
+/* Styles all sidebar section headers */
+.portfolio-sidebar-title {
+  margin: 0 0 8px;
+  font-size: 1rem;
+  color: #374151;
+}
+
+/* Justifies paragraphs inside sidebar section */
+.portfolio-sidebar-section p {
+  text-align: justify;
+}
+
+/* Formats the use cases as a simple bulleted list */
+.portfolio-skills-list {
+  list-style: disc;
+  padding-left: 20px;
+  margin: 0;
+}
+
+/* Uses a simple vertical layout for the contact form controls */
+.portfolio-contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Keeps labels visually consistent across form fields */
+.portfolio-contact-form label {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* Styles both the email input and textarea as email is also targeted with [type="email"] later */
+.portfolio-contact-form input[type="email"],
+.portfolio-contact-form textarea {
+  font: inherit;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+}
+
+/* Aligns the message text evenly across the width of the textarea */
+.portfolio-contact-form textarea {
+  text-align: justify;
+}
+
+/* Emphasizes the border when a form field is focused for keyboard users */
+.portfolio-contact-form input[type="email"]:focus,
+.portfolio-contact-form textarea:focus {
+  outline: 2px solid #4f46e5;
+  border-color: #4f46e5;
+}
+
+/* Styles the contact form button to look like an important action */
+.portfolio-contact-form button {
+  margin-top: 6px;
+  align-self: flex-start;
+  font: inherit;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: none;
+  background-color: #4f46e5;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+/* Slightly darkens the button on hover and focus */
+.portfolio-contact-form button:hover,
+.portfolio-contact-form button:focus {
+  background-color: #4338ca;
+}
+
+/* Styles the profile photo container in the sidebar */
+.portfolio-profile {
+  margin: 0 0 12px;
+  text-align: center;
+}
+
+/* Keeps the profile image rounded and responsive */
+.portfolio-profile img {
+  max-width: 160px;
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  border: 2px solid #d0d7e2;
+}
+
+/* Adds a small caption under the profile image */
+.portfolio-profile-caption {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+/* FOOTER (Flexbox) */
+
+/* Uses Flexbox to style the footer as a card that matches header and sidebar */
+.portfolio-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+
+  padding: 16px 24px 20px;
+  margin-top: 16px;
+
+  border-radius: 12px;
+  border: 1px solid #d0d7e2;
+  background-color: #ffffff;
+
+  font-size: 0.85rem;
+  color: #6b7280;
+
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+/* Adds a subtle hover effect so the footer looks similar to the other components on the page */
+.portfolio-footer:hover {
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.10);
+  border-color: var(--bn-accent);
+}
+
+/* Resets the list and aligns footer links horizontally */
+.portfolio-footer-links {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+/* Styles footer links with a simple blue color */
+
+.portfolio-footer-links a {
+  text-decoration: none;
+  color: var(--bn-accent-dark);
+}
+
+/* Underlines footer links on hover and focus */
+.portfolio-footer-links a:hover,
+.portfolio-footer-links a:focus {
+  text-decoration: underline;
+}
+
+/* OTHER */
+
+/* On medium screens, show puzzle grid in two columns */
+@media (min-width: 640px) {
+  .portfolio-projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* On large screens, show puzzle grid in three columns */
+@media (min-width: 960px) {
+  .portfolio-projects-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* On small screens, stack header layout and main layout vertically */
+@media (max-width: 768px) {
+  /* Stacks logo and navigation vertically for narrow screens */
+  .portfolio-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .portfolio-main-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* BotOrNot Contact Form */
+
+/* Hint text under the contact header */
+#portfolio-contact .hint {
+  color: #555;
+  margin-top: 4px;
+  font-size: 0.9rem;
+}
+
+/* Contact form container */
+#portfolio-contact form {
+  max-width: 100%;
+  padding: 16px 20px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fff;
+}
+
+/* Rows for each field */
+#portfolio-contact .row {
+  margin: 12px 0;
+}
+
+/* Labels */
+#portfolio-contact label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+/* Input/textarea/select styling */
+#portfolio-contact input[type="text"],
+#portfolio-contact input[type="email"],
+#portfolio-contact select,
+#portfolio-contact textarea {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: Arial, sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  background-color: #fff;
+  appearance: auto;
+  -webkit-appearance: menulist;
+  -moz-appearance: menulist;
+}
+
+/* Focus state */
+#portfolio-contact input:focus,
+#portfolio-contact select:focus,
+#portfolio-contact textarea:focus {
+  border-color: #1e88e5;
+  outline: 2px solid rgba(30, 136, 229, 0.25);
+}
+
+/* Error message text */
+#portfolio-contact .error {
+  margin-top: 6px;
+  color: #c62828;
+  font-size: 0.875rem;
+}
+
+/* Red border for invalid rows */
+#portfolio-contact .invalid input,
+#portfolio-contact .invalid select {
+  border-color: #c62828;
+}
+
+/* Button row */
+#portfolio-contact .actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+/* Primary button */
+#portfolio-contact button {
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 4px;
+  background: var(--bn-accent);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Secondary button */
+#portfolio-contact button.secondary {
+  background: #e0e0e0;
+  color: #111;
+}
+
+/* Confirmation panel after successful submission */
+#submissionResult {
+  max-width: 100%;
+  margin-top: 18px;
+  padding: 12px 14px;
+  border-left: 4px solid var(--bn-accent);
+  background: #f4fff8;
+  white-space: pre-wrap;
+}
+
+/* Hide helper */
+.is-hidden {
+  display: none !important;
+}
+
+/* Small helper text span */
+.small {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Extra breathing room between header and main content on puzzles/results */
+.puzzle-page .portfolio-main-content,
+.results-page .portfolio-main-content {
+  margin-top: 24px;
+}
+
+/* Slightly reduce extra gaps so spacing looks even */
+.puzzle-page .portfolio-projects-section,
+.results-page .portfolio-projects-section {
+  margin-top: 8px;
+}
+
+/* Puzzle 1: Visual Sort (under .puzzle-page) */
+
+.puzzle-page .items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.puzzle-page .item-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 52px;
+  border: 1px solid #c8cdd6;
+  border-radius: 12px;
+  padding: 12px;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,.08);
+  user-select: none;
+  cursor: grab;
+  width: 100%;
+}
+
+.puzzle-page .item-card:active {
+  cursor: grabbing;
+}
+
+/* 36×36 icon - small, but still readable */
+.puzzle-page .item-icon {
+  width: 96px;
+  height: 96px;
+  flex: 0 0 96px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #fff;
+}
+
+/* Item name is primary */
+.puzzle-page .item-name {
+  flex: 1 1 auto;
+  display: block;
+  font-weight: 600;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+}
+
+/* Drop zones layout */
+.puzzle-page .dropzones {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: stretch;
+  margin-top: 12px;
+}
+
+/* Title spans both columns */
+.puzzle-page .dropzones > h3 {
+  grid-column: 1 / -1;
+  margin-bottom: 8px;
+}
+
+/* Drop zone styling */
+.puzzle-page .dropzone {
+  min-height: 180px;
+  border: 2px dashed #c8cdd6;
+  border-radius: 12px;
+  padding: 12px;
+  background: #fafbfc;
+}
+
+.puzzle-page .dropzone h4 {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  color: var(--bn-accent);
+}
+
+/* Emphasize zone on drag-over for visibility */
+.puzzle-page .dropzone.dropzone--over {
+  border-color: var(--bn-accent);
+  background: #f0f6ff;
+}
+
+/* Success banner */
+.puzzle-page .success-banner {
+  color: #155724;
+  background: #d4edda;
+  border: 1px solid #c3e6cb;
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin: 8px 0 16px 8px;
+}
+
+/* Visually hidden helper */
+.puzzle-page .visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+/* Shared result-page actions */
+.results-actions {
+  margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* Base button style */
+.bn-btn {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+/* Primary (green) button */
+.bn-btn-primary {
+  background-color: #3cab3c;
+  border-color: #3cab3c;
+  color: #ffffff;
+}
+
+.bn-btn-primary:hover,
+.bn-btn-primary:focus {
+  background-color: #1b5e20;
+  border-color: #1b5e20;
+  color: #ffffff;
+}
+
+/* Secondary (outlined) button */
+.bn-btn-secondary {
+  background-color: #ffffff;
+  border-color: #3cab3c;
+  color: #3cab3c;
+}
+
+.bn-btn-secondary:hover,
+.bn-btn-secondary:focus {
+  background-color: #3cab3c;
+  color: #ffffff;
+}
+
+/* Puzzle 2: Spot the Odd: for single full-width drop zone */
+.puzzle2-page .dropzones {
+  grid-template-columns: 1fr;
+}
+
+/* Puzzle 3: Find the Perfect Fit: for single full-width drop zone */
+.puzzle3-page .dropzones {
+  grid-template-columns: 1fr;
+}

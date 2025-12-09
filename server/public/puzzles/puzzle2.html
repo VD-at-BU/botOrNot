@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Lets the layout fit both phones and desktops -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>BotOrNot: Spot the Odd Puzzle</title>
+  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="../css/styles.css">
+  <script src="../js/puzzle2.js" defer></script>
+</head>
+<body class="puzzle-page puzzle2-page">
+
+  <div class="portfolio-page">
+
+    <!-- HEADER (same as index.html, relative links) -->
+    <header class="portfolio-header">
+      <div class="portfolio-header-brand">
+        <img src="../images/logo.svg" class="portfolio-logo" alt="BotOrNot logo">
+        <div class="portfolio-header-text">
+          <h1 class="portfolio-owner-name">BotOrNot</h1>
+          <p class="portfolio-owner-tagline">
+            Stop bots with puzzles humans solve in seconds
+          </p>
+        </div>
+      </div>
+
+      <nav class="portfolio-main-navigation" aria-label="Primary navigation">
+        <ul class="portfolio-main-navigation-list">
+          <li><a href="../index.html#portfolio-projects">Puzzles</a></li>
+          <li><a href="../index.html#portfolio-about">About</a></li>
+          <li><a href="../index.html#portfolio-contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- MAIN CONTENT: Spot the Odd -->
+    <main class="portfolio-main-content" aria-labelledby="page-title">
+      <section class="portfolio-projects-section">
+        <h2 id="page-title" class="portfolio-section-title">
+          Spot the Odd
+        </h2>
+
+        <p id="puzzle2-instruction">
+          Loading icons… If nothing appears, please reload or try again.
+        </p>
+
+        <div id="puzzle2-aria-status" class="visually-hidden" aria-live="polite"></div>
+
+        <!-- Eight icons: seven from one category, and one from another -->
+        <section aria-labelledby="puzzle2-items-title">
+          <h3 id="puzzle2-items-title">Icons from two categories</h3>
+          <div id="puzzle2-items" class="items-grid" role="list"></div>
+        </section>
+
+        <!-- Single drop zone for the odd item -->
+        <section class="dropzones" aria-labelledby="puzzle2-dropzone-title">
+          <h3 id="puzzle2-dropzone-title">Drop zone for the odd icon</h3>
+
+          <div
+            id="puzzle2-dropzone"
+            class="dropzone"
+            aria-label="Drop the icon that does not belong here"
+            role="region"
+            tabindex="0">
+            <h4 id="puzzle2-dropzone-label">Odd one out</h4>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <footer class="portfolio-footer">
+      <p class="portfolio-footer-copy">
+        &copy; 2025 BotOrNot. All rights reserved.
+      </p>
+      <ul class="portfolio-footer-links">
+        <li><a href="#page-title">Back to top</a></li>
+      </ul>
+    </footer>
+
+  </div>
+</body>
+</html>

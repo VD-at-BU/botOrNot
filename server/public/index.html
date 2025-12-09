@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+  <!-- Lets the layout fit both phones and desktops -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>BotOrNot: Human Verification Puzzles</title>
+  <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
+
+  <!-- Adds the main stylesheet -->
+  <link rel="stylesheet" href="./css/styles.css">
+  <!-- JS for the contact form -->
+  <script src="./js/contact.js" defer></script>
+</head>
+<body>
+
+  <!-- Wraps the entire page content to keep it centered on large screens -->
+  <div class="portfolio-page">
+
+    <!-- HEADER -->
+    <header class="portfolio-header">
+	<div class="portfolio-header-brand">
+	  <img src="./images/logo.svg" class="portfolio-logo" alt="BotOrNot logo">
+	  <div class="portfolio-header-text">
+		<h1 class="portfolio-owner-name">BotOrNot</h1>
+		<p class="portfolio-owner-tagline">
+		  Stop bots with puzzles humans solve in seconds
+		</p>
+	  </div>
+	</div>
+	  
+      <nav class="portfolio-main-navigation" aria-label="Primary navigation">
+        <ul class="portfolio-main-navigation-list">
+          <li><a href="#portfolio-projects">Puzzles</a></li>
+          <li><a href="#portfolio-about">About</a></li>
+          <li><a href="#portfolio-contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- MAIN LAYOUT -->
+    <div class="portfolio-main-layout">
+
+      <!-- MAIN CONTENT – Puzzles -->
+      <main id="portfolio-projects" class="portfolio-main-content" aria-labelledby="projects-title">
+        <section class="portfolio-projects-section">
+          <h2 id="projects-title" class="portfolio-section-title">Puzzles</h2>
+
+          <div class="portfolio-projects-grid">
+            
+            <!-- Puzzle 1: Visual Sort (featured because it is the most complicated to pass) -->
+            <article class="portfolio-project-card" data-project-featured="true">
+              <h3 class="portfolio-project-title">
+                Visual Sort
+              </h3>
+              <p class="portfolio-project-meta">'Visual Sort' Puzzle</p>
+
+              <details class="portfolio-project-details">
+                <summary class="portfolio-project-details-summary">
+                  <span class="portfolio-project-details-summary-closed">View details</span>
+                  <span class="portfolio-project-details-summary-open">Hide details</span>
+                </summary>
+
+                <p class="portfolio-project-description">
+                  'Visual Sort' drops eight small icons on the board and gives you two labels,
+                  such as BOOKS and TOOLS or FOOD and JEWELRY. Humans instantly see which icons
+                  belong where. Bots don’t. Drag each icon into the correct bucket to complete
+                  the puzzle.
+                </p>
+
+                <p class="portfolio-project-description">
+                  Each round is generated from a large image library, so the combinations keep
+                  changing without any hard-coded questions. The challenge is simple for humans
+                  and difficult for automated scripts.
+                </p>
+
+                <p class="portfolio-project-description">
+                  <a href="./puzzles/puzzle1.html">Launch 'Visual Sort Puzzle' →</a>
+                </p>
+              </details>
+            </article>
+            
+            
+            <!-- Puzzle 2: Spot the Odd -->
+            <article class="portfolio-project-card">
+              <h3 class="portfolio-project-title">
+                Spot the Odd
+              </h3>
+              <p class="portfolio-project-meta">'Spot the Odd' Puzzle</p>
+
+              <details class="portfolio-project-details">
+                <summary class="portfolio-project-details-summary">
+                  <span class="portfolio-project-details-summary-closed">View details</span>
+                  <span class="portfolio-project-details-summary-open">Hide details</span>
+                </summary>
+
+                <p class="portfolio-project-description">
+                  'Spot the Odd' shows eight icons: seven from a single category and one clear imposter.
+                  Your goal is to spot the item that doesn’t belong and drag it into the odd-one-out
+                  drop zone. Humans are very good at “this just doesn’t fit” judgments; bots struggle
+                  when the artwork and categories change every time.
+                </p>
+
+                <p class="portfolio-project-description">
+                  The engine simply chooses two categories and samples icons at random. No subjective
+                  attributes are needed; the difference is purely visual and category-based.
+                </p>
+
+                <p class="portfolio-project-description">
+                  <a href="./puzzles/puzzle2.html">Launch 'Spot the Odd' Puzzle →</a>
+                </p>
+              </details>
+            </article>            
+            
+            <!-- Puzzle 3: Find the Perfect Fit -->
+            <article class="portfolio-project-card">
+              <h3 class="portfolio-project-title">
+                Find the Perfect Fit
+              </h3>
+              <p class="portfolio-project-meta">'Find the Perfect Fit' Puzzle</p>
+
+              <details class="portfolio-project-details">
+                <summary class="portfolio-project-details-summary">
+                  <span class="portfolio-project-details-summary-closed">View details</span>
+                  <span class="portfolio-project-details-summary-open">Hide details</span>
+                </summary>
+
+                <p class="portfolio-project-description">
+                 'Find the Perfect Fit' flips the 'Spot the Odd' puzzle idea. The board starts filled 
+                 with icons from a single category, such as fish. From a separate set of candidates,
+                 only one icon would blend naturally into that group. Drag the one that fits
+                 into the target zone.
+                </p>
+
+                <p class="portfolio-project-description">
+                  The puzzle is defined using only categories. Seven candidates are drawn
+                  from the “wrong” groups and one from the matching group. It’s a tiny, visual
+                  reasoning test that feels natural to humans and awkward for bots.
+                </p>
+
+                <p class="portfolio-project-description">
+                  <a href="./puzzles/puzzle3.html">Launch 'Find the Perfect Fit' Puzzle →</a>
+                </p>
+              </details>
+            </article>
+
+          </div>
+        </section>
+      </main>
+
+      <!-- SIDEBAR -->
+      <aside id="portfolio-about" class="portfolio-sidebar" aria-label="About and contact information">
+
+        <!-- What is BotOrNot -->
+        <section class="portfolio-sidebar-section">
+          <h2 id="about-title" class="portfolio-sidebar-title">What Is BotOrNot?</h2>
+          <p>
+            BotOrNot is a human-friendly verification layer that keeps bots out
+            without punishing real users. Instead of distorted text or unreadable
+            images, BotOrNot uses small drag-and-drop puzzles that feel more like
+            a mini-game than a security gate.
+          </p>
+          <p>
+            The system works with a compact icon library, such as books, boots, food, jewelry,
+            tools, fish, flowers, and a few simple rules. That’s enough to generate
+            thousands of unique puzzle instances without pre-written questions.
+          </p>
+        </section>
+
+        <!-- How BotOrNot works -->
+        <section class="portfolio-sidebar-section">
+          <h2 class="portfolio-sidebar-title">How BotOrNot Works</h2>
+          <p>
+            When a visitor reaches your verification step, BotOrNot creates a fresh
+            puzzle on the fly by randomly selecting categories and icons from the image
+            library. The user solves a short drag-and-drop task that leverages natural
+            visual reasoning: “these all match, that one doesn’t”.
+          </p>
+          <p>
+            Automated scripts can read text and follow fixed flows, but they’re much
+            weaker at quickly understanding visual groupings. BotOrNot leans into that
+            gap to raise the cost of scripted abuse while keeping the experience obvious
+            and quick for humans.
+          </p>
+        </section>
+
+        <!-- Use cases / quick facts -->
+        <section class="portfolio-sidebar-section">
+          <h2 class="portfolio-sidebar-title">Use Cases</h2>
+          <ul class="portfolio-skills-list">
+            <li>Protect demo sign-up forms from automated spam</li>
+            <li>Add a light-weight verification step to custom web tools</li>
+            <li>Experiment with puzzle-based CAPTCHAs without heavy backends</li>
+          </ul>
+        </section>
+
+        <!-- Contact Form -->
+        <section id="portfolio-contact" class="portfolio-sidebar-section">
+          <h2 id="contact-title" class="portfolio-sidebar-title">Contact</h2>
+          <p id="formNote" class="hint">
+            Share how you might use BotOrNot. Email is optional, but must be valid if provided.
+          </p>
+
+          <!-- Turns off native browser validation so all checks are done in JavaScript -->
+          <form id="submitForm" novalidate>
+            <!-- First name -->
+            <div class="row" id="row-firstName">
+              <label for="firstName">First name</label>
+              <input id="firstName" name="firstName" type="text" autocomplete="given-name">
+              <div class="error" aria-live="polite"></div>
+            </div>
+
+            <!-- Last name -->
+            <div class="row" id="row-lastName">
+              <label for="lastName">Last name</label>
+              <input id="lastName" name="lastName" type="text" autocomplete="family-name">
+              <div class="error" aria-live="polite"></div>
+            </div>
+
+            <!-- Email -->
+            <div class="row" id="row-email">
+              <label for="email">Email <span class="small">(optional, but will be validated)</span></label>
+              <input id="email" name="email" type="email" autocomplete="email">
+              <div class="error" aria-live="polite"></div>
+            </div>
+
+            <!-- Interest level -->
+            <div class="row" id="row-subscriptionPackage">
+              <label for="subscriptionPackage">Interest level</label>
+              <select id="subscriptionPackage" name="subscriptionPackage">
+                <option value="">--- Select ---</option>
+                <option>Just exploring</option>
+                <option>Ready to test BotOrNot</option>
+                <option>High-volume protection</option>
+              </select>
+              <div class="error" aria-live="polite"></div>
+            </div>
+
+            <!-- Confirmation checkbox -->
+            <div class="row" id="row-subscribe">
+              <label>
+                <input id="subscribe" name="subscribe" type="checkbox">
+                I confirm this is a real inquiry and not bulk spam
+              </label>
+              <div class="error" aria-live="polite"></div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="actions">
+              <button id="submitButton" type="submit">Send</button>
+              <button id="resetButton" type="button" class="secondary">Reset</button>
+            </div>
+          </form>
+
+          <!-- Success message panel -->
+          <div id="submissionResult" class="is-hidden" tabindex="-1" role="status" aria-live="polite"></div>
+        </section>
+
+      </aside>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="portfolio-footer">
+      <p class="portfolio-footer-copy">
+        &copy; 2025 BotOrNot. All rights reserved.
+      </p>
+      <ul class="portfolio-footer-links">
+        <li><a href="#portfolio-projects">Back to top</a></li>
+      </ul>
+    </footer>
+
+  </div>
+</body>
+</html>
